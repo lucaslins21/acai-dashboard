@@ -18,7 +18,13 @@ def load_data():
     dias_semana_ptbr = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado', 'Domingo']
     df['Dia_Semana'] = df['Data'].dt.dayofweek.map(lambda x: dias_semana_ptbr[x])
 
-    df['Mes_Nome'] = df['Data'].dt.month_name(locale='pt_BR')
+    meses_ptbr = [
+    "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+    "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
+]
+    df['Mes_Nome'] = df['Data'].dt.month - 1
+    df['Mes_Nome'] = df['Mes_Nome'].map(lambda x: meses_ptbr[x].capitalize())
+
 
     df['Lucro_Total'] = pd.to_numeric(df['Lucro_Total'], errors='coerce')
     df['Total_Venda'] = pd.to_numeric(df['Total_Venda'], errors='coerce')
