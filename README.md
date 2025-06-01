@@ -1,2 +1,2 @@
 # acai-dashboard
-Dashboard de Diagnóstico para uma Empresa Fictícia de Açaí.
+Previsão de Vendas - Ciência de Dados Aplicada à Competitividade das Micro e Pequenas Empresas (MPEs)
