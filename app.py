@@ -15,7 +15,9 @@ def load_data():
     df['Data'] = pd.to_datetime(df['Data'])
     df['Hora_Pedido'] = pd.to_datetime(df['Hora_Pedido']).dt.time
     df['Ano_Mes'] = df['Data'].dt.to_period('M').astype(str)
-    df['Dia_Semana'] = df['Data'].dt.day_name(locale='pt_BR')
+    dias_semana_ptbr = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado', 'Domingo']
+    df['Dia_Semana'] = df['Data'].dt.dayofweek.map(lambda x: dias_semana_ptbr[x])
+
     df['Mes_Nome'] = df['Data'].dt.month_name(locale='pt_BR')
 
     df['Lucro_Total'] = pd.to_numeric(df['Lucro_Total'], errors='coerce')
